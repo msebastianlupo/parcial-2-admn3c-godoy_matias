@@ -1,12 +1,16 @@
 <template>
     <div class="notas-cont">
-        <div class="busqueda-cont"><input id="busqueda" type="search" placeholder="Buscá notas guardadas" v-model.trim="buscador" @input="levantarTexto"><img class="btn-nueva-nota" src="../assets/img/nueva.png" alt="Botón nueva nota" @click="editar" title="Crear una nota"></div>
+        <div class="busqueda-cont"><input id="busqueda" type="search" placeholder="Podés buscar por título o prioridad" v-model.trim="buscador" @input="levantarTexto"><img class="btn-nueva-nota" src="../assets/img/nueva.png" alt="Botón nueva nota" @click="editar" title="Crear una nota"></div>
         <h1 id="h1-main" v-if="buscador">{{buscador | contarCoincidencias}}</h1>
         <h1 id="h1-main" v-else-if="local">{{arrNotas | pluralizarH1}}</h1>
         <h1 id="h1-main" class="h1-pred" v-else @click="editar">{{h1Pred}}</h1>
         <div class="notas-items-cont">
-            <div class="notas-items" v-for="(nota, index) in arrNotas" :key="index" @click="capturar(nota)" :style="estilos[index]" v-show="buscador === '' || nota.ti.includes(buscador)">
-                <h2 class="h2-items">{{nota.ti}}</h2><span class="fecha">{{nota.fe}}</span>
+            <div class="notas-items" v-for="(nota, index) in arrNotas" :key="index" @click="capturar(nota)" v-show="buscador === '' || nota.ti.includes(buscador) || nota.pr === buscador">
+                <h2 class="h2-items">{{nota.ti}}</h2>
+                <div class="span-cont">
+                    <span :class="'prioridad ' + prClases[nota.pr]">{{nota.pr}}</span>
+                    <span class="fecha">{{nota.fe}}</span>
+                </div>
             </div>
             <VisorNota :nota="dataClick" @cerrado="cerrar" @edicion="editar" @borrado="borrar" v-if="visor"></VisorNota>
             <NuevaNota v-if="nueva" :arrNotas="arrNotas" :edicion="dataClick" @cancelado="cancelar" @guardado="resetear"></NuevaNota>
@@ -34,7 +38,8 @@
                     visor: false,
                     nueva: false,
                     buscador: "",
-                    estilos: []
+                    prClases: {"URGENTE": "pr-urgente", "IMPORTANTE": "pr-importante", "REGULAR": "pr-regular", "BAJA": "pr-baja"}
+
                 }
             }
         ,
@@ -105,12 +110,7 @@
                 let almacenadas = localStorage.getItem("anotame");
                 if(almacenadas){
                     this.arrNotas = JSON.parse(almacenadas);
-                    this.estilos = [];
                     this.local = true;
-                    for(let nota of this.arrNotas){
-                        let boxShadow = `0 0 0.3rem 0.1rem ${nota.co}`;
-                        this.estilos.push({'border-color': nota.co, 'box-shadow': boxShadow});
-                    }
                 }
             }
         },
@@ -181,7 +181,19 @@
             text-overflow: ellipsis;
             overflow-x: hidden;
             white-space: nowrap;
+            font-weight: normal;
+            text-shadow: 0.1rem 0.1rem #111;
         }
+
+    .span-cont{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .prioridad{
+        font-size: 1.6rem;
+    }
 
     .fecha{
         font-size: 1.3rem;
@@ -190,7 +202,7 @@
     /*tablet*/
     @media screen and (min-width: 481px){
         #busqueda{
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
 
         .h2-items{
@@ -200,10 +212,6 @@
 
     /*pc*/
     @media screen and (min-width: 769px){
-        #h1-main {
-            font-size: 3rem;
-        }
-
         .notas-items-cont{
             width: 100%;
             display: flex;
@@ -221,7 +229,7 @@
         .h2-items{
             width: 100%;
             margin-bottom: 1rem;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             text-align: center;
         }
 

@@ -5,9 +5,12 @@
             <label for="titulo" :class="titulo.length > 3 ? 'label-ok' : 'label-error'">{{labelTi}}</label>
             <input type="text" name="titulo" id="titulo" placeholder="Nueva nota" v-model.trim="titulo" required @input="validar" @keypress.enter.prevent>
             <label for="texto" :class="texto.length > 19 ? 'label-ok' : 'label-error'">{{labelTe}}</label>
-            <textarea name="text" id="texto" v-model="texto" @input="validar" required></textarea>
-            <label for="color">Color</label>
-            <input type="color" id="color" v-model="color">
+            <textarea name="texto" id="texto" v-model="texto" @input="validar" required></textarea>
+            <label for="prioridad" :class="prioridad ? 'label-ok' : 'label-error'">{{labelPr}}</label>
+            <select name="prioridad" id="prioridad" v-model="prioridad" required @change="validar">
+                <option value="" disabled>Seleccioná</option>
+                <option v-for="(pr, index) in arrPrioridad" :key="index" :value="pr">{{pr}}</option>
+            </select>
             <div class="btn-nueva-cont">
                 <button @click="$emit('cancelado')">Cancelar</button>
                 <button @click="guardar()">Guardar</button>
@@ -23,13 +26,15 @@
             function() {
                 return {
                     nueva: true,
+                    arrPrioridad: ["BAJA", "REGULAR", "IMPORTANTE", "URGENTE"],
                     identificacion: 0,
                     titulo: "",
                     texto: "",
-                    color: "#242424",
+                    prioridad: "",
                     fecha: "",
                     labelTi: "Colocale un título",
                     labelTe: "Describí la nota",
+                    labelPr: "Elegí la prioridad",
                     arrNotasFix: this.arrNotas
                 }
             },
@@ -41,7 +46,7 @@
                     nota.id = this.identificacion;
                     nota.ti = this.titulo.toUpperCase();
                     nota.te = this.texto;
-                    nota.co = this.color;
+                    nota.pr = this.prioridad;
                     nota.fe = this.fecha;
                     if(!this.nueva){
                         for(let nro in this.arrNotasFix){
@@ -59,7 +64,8 @@
             validar(){
                 this.titulo.length > 3 ? this.labelTi = "El título está ok" : this.labelTi = `Faltan ${4 - this.titulo.length} caracteres`;
                 this.texto.length > 19 ? this.labelTe = "La descripción está ok" : this.labelTe = `Al menos ${20 - this.texto.length} caracteres más`;
-                if(this.titulo.length > 3 && this.texto.length > 19){
+                this.prioridad ? this.labelPr = "La prioridad está ok" : this.labelPr = `Falta una prioridad`;
+                if(this.titulo.length > 3 && this.texto.length > 19 && this.prioridad){
                     return true;
                 }
                 else {
@@ -75,7 +81,7 @@
                 this.identificacion = this.edicion.id;
                 this.titulo = this.edicion.ti;
                 this.texto = this.edicion.te;
-                this.color = this.edicion.co;
+                this.prioridad = this.edicion.pr;
             }else{
                 this.nueva = true;
                 this.identificacion = Date.now();
@@ -110,14 +116,8 @@
         box-shadow: inset 0 0 0.5rem #ccc;
     }
 
-    input[type="color"]{
-    width: 10rem;
-    height: 4rem;
-    padding: 0;
-    }
-
     textarea{
-        min-height: 20rem;
+        min-height: 15rem;
         resize: none;
     }
 

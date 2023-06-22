@@ -1,6 +1,6 @@
 <template>
     <div class="contenedores-fijos" ref="visor" @keydown.esc="$emit('cerrado')" tabindex="-1">
-        <div class="visor-cont" :style="aplicarShadow(nota.co)">
+        <div class="visor-cont">
             <div class="acciones-visor">
                 <img src="../assets/img/cerrar.png" alt="Cerrar" @click="$emit('cerrado')">
                 <img src="../assets/img/editar.png" alt="Editar" @click="$emit('edicion')">
@@ -35,9 +35,6 @@
         methods: {
             alternarModal(){
                 this.modal ? this.modal = false : this.modal = true;
-            },
-            aplicarShadow(color){
-                return `box-shadow: 0 0 0.5rem ${color}`;
             }
         },
         mounted() {
@@ -59,6 +56,7 @@
         background: #000;
         color: #fff;
         white-space: pre-wrap;
+        box-shadow: 0 0 0.5rem #ff0066;
     }
 
     .acciones-visor{
@@ -81,16 +79,17 @@
     }
 
     .visor-cont h2{
-        font-size: 2.5rem;
         margin-top: 3rem;
-    }
-
-    .visor-cont h3{
         font-size: 2rem;
     }
 
+    .visor-cont h3{
+        font-size: 1.2rem;
+        color: #ff0066;
+    }
+
     .visor-cont p{
-        margin-top: 1.5rem;
-        font-size: 1.8rem;
+        margin-top: 4rem;
+        font-size: 1.6rem;
     }
 </style>
