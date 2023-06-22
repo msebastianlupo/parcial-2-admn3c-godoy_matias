@@ -9,7 +9,7 @@
 }
 
 body{
-    background: #333 url('../img/background.svg') no-repeat center fixed;
+    background: #333;
     background-size: 100% cover;
     padding: 2rem;
     min-height: 100%;
@@ -38,8 +38,12 @@ nav{
     display: flex;
     max-width: 1024px;
     margin: 0 auto;
+    padding: 1.5rem;
     justify-content: space-between;
     align-items: center;
+    background: #333;
+    box-shadow: -0.4rem -0.4rem 0.8rem rgba(150, 150, 150, 0.1), 0.4rem 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
 }
 
 label{
@@ -92,23 +96,9 @@ textarea{
     resize: none;
 }
 
-#icono{
-    width: 5rem;
+.menu-iconos{
+    width: 4rem;
 }
-
-#menu{
-    height: 5rem;
-}
-
-.ideas-cont{
-    display: flex;
-    margin-top: 5rem;
-    justify-content: center;
-}
-
-
-
-
 
 .busqueda-cont{
     display: flex;
@@ -123,11 +113,12 @@ textarea{
     height: 5rem;
     padding: 2rem;
     font-size: 1.5rem;
+    box-shadow: inset 0 0 1rem #333;
+    outline: 0.1rem solid #ddd;
 }
 
 #h1-main{
     margin: 5rem 0 2rem;
-    text-align: center;
     font-size: 2rem;
 }
 

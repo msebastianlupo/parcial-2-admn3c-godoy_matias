@@ -35,6 +35,7 @@ $arrIdeas = [
             "Ver el ocaso",
             "Maratón de pelis",
             "Algo de jardinería",
+            "Aprender a programar",
             "Visitar un ecoparque",
             "Ir a una feria local",
             "Hacer una fiesta",
