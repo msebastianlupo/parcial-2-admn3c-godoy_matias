@@ -119,3 +119,114 @@
         }
     }
 </script>
+
+<style>
+    .busqueda-cont{
+        display: flex;
+        max-width: 768px;
+        margin-top: 5rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #busqueda{
+        width: calc(100% - 7rem);
+        height: 5rem;
+        padding: 2rem;
+        font-size: 1.5rem;
+        box-shadow: inset 0 0 1rem #333;
+        border: 0.1rem solid #ddd;
+    }
+
+    .btn-nueva-nota{
+        padding: 1rem;
+        width: 4.5rem;
+        background: #fff;
+        border-radius: 50%;
+    }
+
+    .btn-nueva-nota:hover{
+        box-shadow: 0 0 1rem #ff0066;
+    }
+
+    .h1-pred:hover{
+        cursor: pointer;
+        color: #ff0066;
+    }
+
+    .notas-cont{
+        display: flex;
+        flex-direction: column;
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    .notas-items{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.5rem 0;
+        padding: 3rem 1rem;
+        background: #242424;
+        border-radius: 0.6rem;
+    }
+
+    .notas-items:hover{
+        cursor: pointer;
+        color: #ddd;
+    }
+
+    .h2-items{
+            width: 50%;
+            text-overflow: ellipsis;
+            overflow-x: hidden;
+            white-space: nowrap;
+        }
+
+    .fecha{
+        font-size: 1.3rem;
+    }
+
+    /*tablet*/
+    @media screen and (min-width: 481px){
+        #busqueda{
+            font-size: 2rem;
+        }
+
+        .h2-items{
+            font-size: 2rem;
+        }
+    }
+
+    /*pc*/
+    @media screen and (min-width: 769px){
+        #h1-main {
+            font-size: 3rem;
+        }
+
+        .notas-items-cont{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .notas-items{
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 1rem);
+            margin: 1rem 0;
+        }
+
+        .h2-items{
+            width: 100%;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .fecha{
+            font-size: 1.5rem;
+        }
+    }
+</style>

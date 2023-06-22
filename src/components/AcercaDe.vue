@@ -4,7 +4,7 @@
         <h2>{{h2}}</h2>
         <p v-if="sinBorrado">{{p}}</p>
         <p v-else>{{pBorrado}}</p>
-        <button v-if="sinBorrado" class="btn-destruccion" @dblclick="borrarDatos">Borrar</button>
+        <button v-if="sinBorrado" class="btn-cta" @dblclick="borrarDatos">Borrar</button>
     </div>
 </template>
 
@@ -30,3 +30,28 @@
         }
     }
 </script>
+
+<style>
+    .acerca-cont{
+        display: flex;
+        flex-direction: column;
+        max-width: 768px;
+        margin: 5rem auto;
+        align-items: center;
+        text-align: center;
+    }
+
+    .h1-especial{
+        font-size: 3rem;
+    }
+
+    .acerca-cont h2{
+        margin-top: 0.5rem;
+        font-size: 2rem;
+    }
+
+    .acerca-cont p{
+        margin-top: 5rem;
+        font-size: 1.8rem;
+    }
+</style>

@@ -2,9 +2,9 @@
     <div class="contenedores-fijos" ref="visor" @keydown.esc="$emit('cerrado')" tabindex="-1">
         <div class="visor-cont" :style="aplicarShadow(nota.co)">
             <div class="acciones-visor">
-                <img src="img/cerrar.png" alt="Cerrar" @click="$emit('cerrado')">
-                <img src="img/editar.png" alt="Editar" @click="$emit('edicion')">
-                <img src="img/borrar.png" alt="Borrar" @click="alternarModal">
+                <img src="../assets/img/cerrar.png" alt="Cerrar" @click="$emit('cerrado')">
+                <img src="../assets/img/editar.png" alt="Editar" @click="$emit('edicion')">
+                <img src="../assets/img/borrar.png" alt="Borrar" @click="alternarModal">
             </div>
             <h2>{{nota.ti}}</h2>
             <h3>{{nota.fe}}</h3>
@@ -45,3 +45,52 @@
         }
     }
 </script>
+
+<style>
+    .visor-cont{
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        height: calc(100% - 10rem);
+        max-width: 48rem;
+        padding: 2rem 2rem 20rem;
+        margin: 3rem auto 0;
+        border-radius: 1rem;
+        background: #000;
+        color: #fff;
+        white-space: pre-wrap;
+    }
+
+    .acciones-visor{
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: end;
+    }
+
+    .acciones-visor img{
+        width: 3rem;
+        margin-left: 1.5rem;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 1rem #ccc;
+    }
+
+    .acciones-visor img:hover{
+        box-shadow: 0 0 1rem #ff0066;
+    }
+
+    .visor-cont h2{
+        font-size: 2.5rem;
+        margin-top: 3rem;
+    }
+
+    .visor-cont h3{
+        font-size: 2rem;
+    }
+
+    .visor-cont p{
+        margin-top: 1.5rem;
+        font-size: 1.8rem;
+    }
+</style>

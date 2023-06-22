@@ -1,7 +1,7 @@
 <template>
     <div class="ideas-cont">
         <h1 class="h1-especial">{{h1}}</h1>
-        <button class="btn-obtener" @click="obtenerIdeas">Obtener ideas</button>
+        <button class="btn-cta" @click="obtenerIdeas">Obtener ideas</button>
         <div class="ideas-listado-cont">
             <p class="p-item" v-for="(idea, index) in lista" :key="index">{{idea}}</p>
         </div>
@@ -64,7 +64,7 @@
         display: flex;
         flex-direction: column;
         max-width: 768px;
-        margin: 5rem auto;
+        margin: 5rem auto 0;
         align-items: center;
         text-align: center;
     }
@@ -88,17 +88,10 @@
         width: 100%;
         margin: 0.4rem;
         padding: 2rem 0.5rem;
-        background: #000;
+        background: #242424;
         border: 0.1px solid #222;
         border-radius: 0.5rem;
         font-size: 2rem;
-    }
-
-    .btn-obtener{
-        font-size: 2rem;
-        margin-top: 3rem;
-        background: #ff0066;
-        color: #fff;
     }
 
     @media screen and (min-width: 769px){

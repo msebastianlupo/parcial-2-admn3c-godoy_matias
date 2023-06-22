@@ -26,7 +26,7 @@
                     identificacion: 0,
                     titulo: "",
                     texto: "",
-                    color: "#000000",
+                    color: "#242424",
                     fecha: "",
                     labelTi: "Colocale un título",
                     labelTe: "Describí la nota",
@@ -83,3 +83,66 @@
         }
     }
 </script>
+
+<style>
+    .form-nota{
+        display: flex;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        max-width: 48rem;
+        max-height: 70rem;
+        margin: 3rem auto 0;
+        padding: 2rem;
+        flex-direction: column;
+        background: #fff;
+        color: #000;
+        border-radius: 1rem;
+    }
+
+    .form-nota h1{
+        font-size: 2.5rem;
+    }
+
+    #titulo, #texto{
+        padding: 1.5rem;
+        font-size: 2rem;
+        box-shadow: inset 0 0 0.5rem #ccc;
+    }
+
+    input[type="color"]{
+    width: 10rem;
+    height: 4rem;
+    padding: 0;
+    }
+
+    textarea{
+        min-height: 20rem;
+        resize: none;
+    }
+
+    .btn-nueva-cont{
+        display: flex;
+        margin-top: 3rem;
+    }
+
+    .btn-nueva-cont button{
+        width: 50%;
+        padding: 1.5rem;
+        font-size: 2rem;
+        background: #000;
+        color: #fff;
+    }
+
+    .btn-nueva-cont button:hover{
+        background: #ff0066;
+    }
+
+    .btn-nueva-cont button:first-of-type{
+        border-radius: 1rem 0 0 1rem;
+    }
+
+    .btn-nueva-cont button:last-of-type{
+        border-radius: 0 1rem 1rem 0rem;
+    }
+</style>
