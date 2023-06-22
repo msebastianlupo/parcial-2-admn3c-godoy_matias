@@ -1,7 +1,15 @@
 <template>
     <div>
-        <div class="ideas-cont">
-            <h1 class="h1-especial">Ideas</h1>
-        </div>
+        <IdeasListado />
     </div>
 </template>
+
+<script>
+    import IdeasListado from '@/components/IdeasListado.vue'
+    export default{
+        name: 'ideasVista',
+        components: {
+            IdeasListado
+        }
+    }
+</script>
