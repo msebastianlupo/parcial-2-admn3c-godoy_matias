@@ -1,8 +1,8 @@
 <template>
     <div class="notas-cont">
         <div class="busqueda-cont"><input id="busqueda" type="search" placeholder="Podés buscar por título o prioridad" v-model.trim="buscador" @input="levantarTexto"><img class="btn-nueva-nota" src="../assets/img/nueva.png" alt="Botón nueva nota" @click="editar" title="Crear una nota"></div>
-        <h1 id="h1-main" v-if="buscador">{{buscador | contarCoincidencias}}</h1>
-        <h1 id="h1-main" v-else-if="local">{{arrNotas | pluralizarH1}}</h1>
+        <h1 id="h1-main" v-if="buscador">Filtro activado</h1>
+        <h1 id="h1-main" v-else-if="local">Todas las notas</h1>
         <h1 id="h1-main" class="h1-pred" v-else @click="editar">{{h1Pred}}</h1>
         <div class="notas-items-cont">
             <div class="notas-items" v-for="(nota, index) in arrNotas" :key="index" @click="capturar(nota)" v-show="buscador === '' || nota.ti.includes(buscador) || nota.pr === buscador">
@@ -43,27 +43,6 @@
                 }
             }
         ,
-        filters: {
-        pluralizarH1: function(notas){
-            if (Array.isArray(notas)){
-                if(notas.length){
-                    return notas.length > 1 ? `${notas.length} notas guardadas` : `1 nota guardada`;
-                }
-            }
-            return '';
-        },
-        contarCoincidencias: function(notas, buscador){     
-            let contador = 0;      
-            if(Array.isArray(notas) && notas.length){
-                for(let n of notas){
-                    if(n.ti.includes(buscador)){
-                        contador++;
-                    }
-                }
-            }
-            return contador ? `Notas encontradas: ${contador}` : "Búsqueda sin resultados";
-        }
-    },
         methods: {
             capturar(nota){
                 this.dataClick = nota;
