@@ -53,10 +53,10 @@
         padding: 2rem 2rem 20rem;
         margin: 3rem auto 0;
         border-radius: 1rem;
-        background: #000;
+        background: #222;
         color: #fff;
         white-space: pre-wrap;
-        box-shadow: 0 0 0.5rem #ff0066;
+        box-shadow: -0.4rem -0.4rem 0.8rem rgba(150, 150, 150, 0.1), 0.4rem 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
     }
 
     .acciones-visor{
